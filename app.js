@@ -1,10 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var app= express();
+const todos =[];
+app.use(express.json());
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
+app.post('/api/todo/create',  (req,res)=>{
+   todos.push(req.body)
+    res.send(todos)
+})
 module.exports = router;
 
 app.get('/',(req,res)=>{
