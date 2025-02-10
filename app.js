@@ -10,6 +10,11 @@ app.post('/api/todo/create',  (req,res)=>{
    todos.push(req.body)
     res.send(todos)
 })
+app.put('/api/todo/update/:id',  (req,res)=>{
+    const { id } = req.params;
+    const todoIndex = todos.findIndex(todo => todo.id === parseInt(id));
+    todos[todoIndex].title = req.body.title ;
+})
 module.exports = router;
 
 app.get('/',(req,res)=>{
